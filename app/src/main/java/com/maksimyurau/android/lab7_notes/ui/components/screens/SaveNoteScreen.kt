@@ -18,6 +18,12 @@ import androidx.compose.ui.unit.sp
 import com.maksimyurau.android.lab7_notes.model.ColorModel
 import com.maksimyurau.android.lab7_notes.ui.components.NoteColor
 import com.maksimyurau.android.lab7_notes.util.fromHex
+import com.maksimyurau.android.lab7_notes.viewmodel.MainViewModel
+
+@Composable
+fun SaveNoteScreen(viewModel: MainViewModel) {
+
+}
 
 @Composable
 private fun ColorPicker(
@@ -38,8 +44,7 @@ private fun ColorPicker(
         ) {
             items(
                 colors.size
-            ) {
-                    itemIndex ->
+            ) { itemIndex ->
                 val color = colors[itemIndex]
                 ColorItem(
                     color = color,
