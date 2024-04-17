@@ -1,7 +1,8 @@
 package com.maksimyurau.android.lab7_notes.ui.components.screens
 
-import androidx.compose.foundation.layout.Column
+import android.annotation.SuppressLint
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import com.maksimyurau.android.lab7_notes.ui.components.Note
 import com.maksimyurau.android.lab7_notes.ui.components.TopAppBar
 import com.maksimyurau.android.lab7_notes.viewmodel.MainViewModel
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NotesScreen(viewModel: MainViewModel) {
 
@@ -20,18 +22,23 @@ fun NotesScreen(viewModel: MainViewModel) {
         .notesNotInTrash
         .observeAsState(listOf())
 
-    Column {
+    Scaffold(topBar = {
         TopAppBar(
-            title = "Заметки",
-            icon = Icons.Filled.List,
-            onIconClick = {}
+            title = "Notes",
+            icon = Icons.Filled.List, onIconClick = {}
         )
-        NotesList(
-            notes = notes,
-            onNoteCheckedChange = { viewModel.onNoteCheckedChange(it) },
-            onNoteClick = { viewModel.onNoteClick(it) }
-        )
-    }
+    },
+        content = {
+            if (notes.isNotEmpty()) {
+                NotesList(
+                    notes = notes, onNoteCheckedChange = {
+                        viewModel.onNoteCheckedChange(it)
+                    },
+                    onNoteClick = { viewModel.onNoteClick(it) }
+                )
+            }
+        }
+    )
 }
 
 @Composable
@@ -41,7 +48,7 @@ private fun NotesList(
     onNoteClick: (NoteModel) -> Unit
 ) {
     LazyColumn {
-        items(count = notes.size) {noteIndex ->
+        items(count = notes.size) { noteIndex ->
             val note = notes[noteIndex]
             Note(
                 note = note,
