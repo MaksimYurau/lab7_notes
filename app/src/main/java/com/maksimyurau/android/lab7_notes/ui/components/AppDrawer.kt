@@ -53,8 +53,8 @@ fun AppDrawer(
         ScreenNavigationButton(
             icon = Icons.Filled.Delete,
             label = "Корзина",
-            isSelected = currentScreen == Screen.Notes,
-            // isSelected = currentScreen == Screen.Trash,
+            // isSelected = currentScreen == Screen.Notes,
+            isSelected = currentScreen == Screen.Trash,
             onClick = {
                 NotesRouter.navigateTo(Screen.Trash)
                 closeDrawerAction()
