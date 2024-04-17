@@ -12,6 +12,7 @@ import com.maksimyurau.android.lab7_notes.routing.NotesRouter
 import com.maksimyurau.android.lab7_notes.routing.Screen
 import com.maksimyurau.android.lab7_notes.theme.NotesTheme
 import com.maksimyurau.android.lab7_notes.ui.components.screens.NotesScreen
+import com.maksimyurau.android.lab7_notes.ui.components.screens.SaveNoteScreen
 import com.maksimyurau.android.lab7_notes.ui.components.screens.TrashScreen
 import com.maksimyurau.android.lab7_notes.viewmodel.MainViewModel
 import com.maksimyurau.android.lab7_notes.viewmodel.MainViewModelFactory
@@ -44,7 +45,7 @@ private fun MainActivityScreen(viewModel: MainViewModel) {
     Surface {
         when (NotesRouter.currentScreen) {
             is Screen.Notes -> NotesScreen(viewModel)
-            is Screen.SaveNote -> NotesScreen(viewModel)
+            is Screen.SaveNote -> SaveNoteScreen(viewModel)
             is Screen.Trash -> TrashScreen(viewModel)
         }
     }
