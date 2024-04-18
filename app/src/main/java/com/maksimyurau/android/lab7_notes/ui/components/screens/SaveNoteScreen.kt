@@ -26,6 +26,17 @@ fun SaveNoteScreen(viewModel: MainViewModel) {
 }
 
 @Composable
+private fun SaveNoteTopAppBar(
+    isEditingMode: Boolean,
+    onBackClick: () -> Unit,
+    onSaveNoteClick: () -> Unit,
+    onOpenColorPickerClick: () -> Unit,
+    onDeleteNoteClick: () -> Unit
+) {
+
+}
+
+@Composable
 private fun ColorPicker(
     colors: List<ColorModel>,
     onColorSelect: (ColorModel) -> Unit
