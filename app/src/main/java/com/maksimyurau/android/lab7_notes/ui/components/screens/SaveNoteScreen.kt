@@ -143,6 +143,17 @@ private fun SaveNoteContent(
                 onNoteChange.invoke(note.copy(content = newContent))
             }
         )
+
+        val canBeCheckedOff: Boolean = note.isCheckedOff != null
+
+        NoteCheckOption(
+            isChecked = canBeCheckedOff,
+            onCheckedChange = { canBeCheckedOffNewValue ->
+                val isCheckedOff: Boolean? = if (canBeCheckedOffNewValue) false else null
+                onNoteChange.invoke(note.copy(isCheckedOff = isCheckedOff))
+            }
+        )
+        PickedColor(color = note.color)
     }
 }
 
