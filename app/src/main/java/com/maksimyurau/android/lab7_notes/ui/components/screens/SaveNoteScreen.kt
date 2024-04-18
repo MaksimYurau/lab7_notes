@@ -223,3 +223,9 @@ fun SaveNoteTopAppBarPreview() {
         onDeleteNoteClick = {}
     )
 }
+
+@Preview(showBackground = true)
+@Composable
+fun PickedColorPreview() {
+    PickedColor(ColorModel.DEFAULT)
+}
