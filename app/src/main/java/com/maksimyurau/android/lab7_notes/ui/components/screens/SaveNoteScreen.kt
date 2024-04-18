@@ -14,6 +14,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -76,6 +77,18 @@ private fun SaveNoteTopAppBar(
                     contentDescription = "Open Color Picker Button",
                     tint = MaterialTheme.colors.onPrimary
                 )
+            }
+            // Delete action icon (show only
+            if (isEditingMode) {
+                IconButton(
+                    onClick = onDeleteNoteClick
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = "Delete Note Button",
+                        tint = MaterialTheme.colors.onPrimary
+                    )
+                }
             }
         }
     )
