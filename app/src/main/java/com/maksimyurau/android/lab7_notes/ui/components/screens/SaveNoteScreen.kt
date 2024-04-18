@@ -125,7 +125,13 @@ private fun SaveNoteContent(
     onNoteChange: (NoteModel) -> Unit
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
-
+        ContentTextField(
+            label = "Title",
+            text = note.title,
+            onTextChange = { newTitle ->
+                onNoteChange.invoke(note.copy(title = newTitle))
+            }
+        )
     }
 }
 
