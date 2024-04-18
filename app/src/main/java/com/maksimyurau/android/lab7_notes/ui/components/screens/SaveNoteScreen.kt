@@ -247,6 +247,12 @@ fun SaveNoteTopAppBarPreview() {
 
 @Preview(showBackground = true)
 @Composable
+fun NoteCheckOptionPreview() {
+    NoteCheckOption(false) {}
+}
+
+@Preview(showBackground = true)
+@Composable
 fun PickedColorPreview() {
     PickedColor(ColorModel.DEFAULT)
 }
