@@ -13,14 +13,17 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.maksimyurau.android.lab7_notes.R
 import com.maksimyurau.android.lab7_notes.model.ColorModel
 import com.maksimyurau.android.lab7_notes.ui.components.NoteColor
 import com.maksimyurau.android.lab7_notes.util.fromHex
@@ -51,6 +54,26 @@ private fun SaveNoteTopAppBar(
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Save Note Button",
+                    tint = MaterialTheme.colors.onPrimary
+                )
+            }
+        },
+        actions = {
+            // Save note action icon
+            IconButton(onClick = onSaveNoteClick) {
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    tint = MaterialTheme.colors.onPrimary,
+                    contentDescription = "Save Note"
+                )
+            }
+            // Open color picker action icon
+            IconButton(onClick = onOpenColorPickerClick) {
+                Icon(
+                    painter = painterResource(
+                        id = R.drawable.ic_baseline_color_lens_24
+                    ),
+                    contentDescription = "Open Color Picker Button",
                     tint = MaterialTheme.colors.onPrimary
                 )
             }
