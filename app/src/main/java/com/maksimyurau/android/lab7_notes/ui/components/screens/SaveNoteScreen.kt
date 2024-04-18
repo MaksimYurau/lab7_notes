@@ -1,5 +1,6 @@
 package com.maksimyurau.android.lab7_notes.ui.components.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -16,6 +18,8 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,13 +30,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.maksimyurau.android.lab7_notes.R
 import com.maksimyurau.android.lab7_notes.model.ColorModel
+import com.maksimyurau.android.lab7_notes.model.NEW_NOTE_ID
+import com.maksimyurau.android.lab7_notes.model.NoteModel
+import com.maksimyurau.android.lab7_notes.routing.NotesRouter
+import com.maksimyurau.android.lab7_notes.routing.Screen
 import com.maksimyurau.android.lab7_notes.ui.components.NoteColor
 import com.maksimyurau.android.lab7_notes.util.fromHex
 import com.maksimyurau.android.lab7_notes.viewmodel.MainViewModel
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SaveNoteScreen(viewModel: MainViewModel) {
+    val noteEntry: NoteModel by viewModel.noteEntry.observeAsState(NoteModel())
 
+    Scaffold(topBar = {
+        val isEditingMode: Boolean = noteEntry.id != NEW_NOTE_ID
+        SaveNoteTopAppBar(
+            isEditingMode = isEditingMode, onBackClick = {
+                NotesRouter.navigateTo(Screen.Notes)
+            },
+            onSaveNoteClick = { }, onOpenColorPickerClick = { }, onDeleteNoteClick = { }
+        )
+    },
+        content = {}
+    )
 }
 
 @Composable
