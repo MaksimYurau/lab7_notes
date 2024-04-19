@@ -308,6 +308,15 @@ fun SaveNoteTopAppBarPreview() {
 
 @Preview(showBackground = true)
 @Composable
+fun SaveNoteContentPreview() {
+    SaveNoteContent(
+        note = NoteModel(title = "Title", content = "content"),
+        onNoteChange = {}
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
 fun ContentTextFieldPreview() {
     ContentTextField(
         label = "Title",
