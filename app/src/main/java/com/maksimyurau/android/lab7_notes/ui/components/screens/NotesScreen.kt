@@ -111,6 +111,7 @@ private fun NotesList(
         items(count = notes.size) { noteIndex ->
             val note = notes[noteIndex]
             Note(
+                isSelected = true,
                 note = note,
                 onNoteClick = onNoteClick,
                 onNoteCheckedChange = onNoteCheckedChange
