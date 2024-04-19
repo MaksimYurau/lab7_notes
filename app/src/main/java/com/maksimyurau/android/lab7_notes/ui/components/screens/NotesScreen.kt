@@ -5,9 +5,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
@@ -21,7 +24,7 @@ import com.maksimyurau.android.lab7_notes.model.NoteModel
 import com.maksimyurau.android.lab7_notes.routing.Screen
 import com.maksimyurau.android.lab7_notes.ui.components.AppDrawer
 import com.maksimyurau.android.lab7_notes.ui.components.Note
-import com.maksimyurau.android.lab7_notes.ui.components.TopAppBar
+
 import com.maksimyurau.android.lab7_notes.viewmodel.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -37,18 +40,30 @@ fun NotesScreen(viewModel: MainViewModel) {
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
-    Scaffold(topBar = {
+    Scaffold(
+        topBar = {
         TopAppBar(
-            title = "Notes",
-            icon = Icons.Filled.List,
-            onIconClick = {
-                // здесь — открываем Drawer
-                coroutineScope.launch {
-                    scaffoldState.drawerState.open()
+            title = {
+                Text(
+                    text = "Notes",
+                    color = MaterialTheme.colors.onPrimary
+                )
+            },
+            navigationIcon = {
+                IconButton(onClick = {
+                    coroutineScope.launch {
+                        scaffoldState.drawerState.open()
+                    }
+                }
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.List,
+                        contentDescription = "Drawer Button"
+                    )
                 }
             }
         )
-    },
+     },
         scaffoldState = scaffoldState, // Здесь — состояние Scaffold
         drawerContent = { // Здесь — Drawer UI
             AppDrawer(
