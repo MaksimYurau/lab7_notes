@@ -87,7 +87,7 @@ fun SaveNoteScreen(viewModel: MainViewModel) {
                 }
             },
             onDeleteNoteClick = { // Здесь
-                viewModel.moveNoteToTrash(noteEntry)
+                moveNoteToTrashDialogShowState.value = true
             }
         )
     },
