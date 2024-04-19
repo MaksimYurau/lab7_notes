@@ -50,10 +50,9 @@ import com.maksimyurau.android.lab7_notes.util.fromHex
 import com.maksimyurau.android.lab7_notes.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class) // Здесь (BottomDrawer)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-@ExperimentalMaterialApi
+@ExperimentalMaterialApi // Здесь (BottomDrawer)
 fun SaveNoteScreen(viewModel: MainViewModel) {
     val noteEntry: NoteModel by viewModel.noteEntry.observeAsState(NoteModel())
 
